@@ -1,0 +1,306 @@
+/* --- ESTILO: Modern Lifestyle / Editorial Startup --- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+    /* Paleta de colores */
+    --bg-color: #FFFBF7;      /* Crema muy suave */
+    --card-bg: #FFFFFF;       /* Blanco puro */
+    --text-main: #1F1F1F;     /* Negro casi puro */
+    --text-muted: #666666;    /* Gris medio */
+    
+    /* Colores de Marca */
+    --primary: #8B5CF6;       /* Violeta (Lo dejamos solo para detalles decorativos) */
+    --accent: #FF7E67;        /* CORAL VIBRANTE (El color que te gusta) */
+    
+    /* Variables de diseño */
+    --shadow: 0 20px 40px -5px rgba(139, 92, 246, 0.15);
+    --radius: 24px;
+}
+
+/* Configuración base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Patrón de puntos sutil */
+    background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+    background-size: 30px 30px; 
+}
+
+/* --- La Tarjeta Principal (Container) --- */
+.app-container {
+    background: var(--card-bg);
+    padding: 3.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 650px;
+    width: 90%;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+    text-align: center;
+    transition: height 0.3s ease;
+}
+
+/* --- Tipografía Editorial --- */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* --- EL BOTÓN PRINCIPAL (Ahora Coral) --- */
+/* Se usa en la Landing y en los submits de los juegos */
+.btn-chic {
+    background-color: var(--accent); /* Color Coral */
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px; /* Forma de píldora moderna */
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    
+    /* Sombra suave color Coral */
+    box-shadow: 0 10px 20px -5px rgba(255, 126, 103, 0.4);
+}
+
+.btn-chic:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -5px rgba(255, 126, 103, 0.6);
+    background-color: #E66A55; /* Un poco más oscuro al pasar el ratón */
+}
+
+.btn-chic:active {
+    transform: translateY(-1px);
+}
+
+/* --- Botones Secundarios (Opciones del Asesino) --- */
+.btn-option {
+    background: white;
+    border: 2px solid #F3F4F6;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.2s ease;
+    font-family: 'Manrope', sans-serif;
+}
+
+.btn-option:hover {
+    border-color: var(--accent); /* Borde Coral al pasar ratón */
+    color: var(--accent);        /* Texto Coral al pasar ratón */
+    background: #FFF1F2;         /* Fondo muy clarito rosado */
+}
+
+/* --- Inputs de Texto / Números --- */
+input {
+    background: #F9FAFB;
+    border: 2px solid #E5E7EB;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1.5rem; /* Separación con el botón */
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+    color: var(--text-main);
+}
+
+input:focus {
+    border-color: var(--accent); /* Borde Coral al escribir */
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 126, 103, 0.1);
+}
+
+/* --- Etiquetas y Detalles Visuales --- */
+.step-indicator {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent); /* Texto Coral */
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.highlight-box {
+    background-color: #FFF1F2; 
+    color: #BE123C;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+/* --- Ticket de Recompensa --- */
+.ticket-wrapper {
+    /* Degradado mezclando el Violeta y el Coral */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 20px 40px -10px rgba(255, 126, 103, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalle de brillo en el ticket */
+.ticket-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* --- Utilidades y Animaciones --- */
+.hidden { display: none; }
+.error-msg { color: var(--accent); font-weight: 700; margin-top: 10px; display: block; font-size: 0.9rem;}
+
+.fade-in { 
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.98); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+    .app-container {
+        padding: 2rem;
+        width: 95%;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .btn-chic { width: 100%; } /* Botón ancho completo en móvil */
+}
+
+/* --- Estilo para imágenes dentro del juego --- */
+.game-img {
+    max-width: 100%;       /* Para que no se salga del contenedor en móviles */
+    height: auto;          /* Mantiene la proporción */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+    border: 1px solid rgba(0,0,0,0.05); /* Borde finito */
+    display: block;
+    margin: 0 auto;        /* Centrada */
+}
+
+/* --- ESTILOS SUDOKU INTERACTIVO --- */
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    background: #1F1F1F; /* Color de las líneas del borde */
+    border: 2px solid #1F1F1F;
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+    border-radius: 4px; /* Un pelín redondeado por fuera */
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+
+.sudoku-cell {
+    background: white;
+    aspect-ratio: 1; /* Mantiene las celdas cuadradas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-right: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* Inputs dentro de las celdas */
+.sudoku-cell input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent); /* Los números que escriba Virginia serán color Coral */
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-weight: 600;
+}
+
+/* Números predefinidos (los que no se pueden cambiar) */
+.sudoku-cell input.fixed {
+    color: var(--text-main); /* Negro/Gris oscuro */
+    font-weight: 800;
+    cursor: default;
+}
+
+/* Celdas Lilas (Pistas) */
+.sudoku-cell.highlight-cell {
+    background-color: #E9D5FF; /* Un lila muy suave */
+}
+.sudoku-cell.highlight-cell input {
+    background-color: transparent;
+}
+
+/* Bordes gruesos para separar los bloques de 3x3 */
+.border-right-thick {
+    border-right: 2px solid #1F1F1F !important;
+}
+.border-bottom-thick {
+    border-bottom: 2px solid #1F1F1F !important;
+}
+
+/* Ajustes responsive */
+@media (max-width: 500px) {
+    .sudoku-cell input { font-size: 0.9rem; }
+}

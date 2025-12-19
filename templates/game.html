@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virginia | The Experience</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <main class="app-container">
+        
+        <div id="level-1" class="fade-in">
+            <span class="step-indicator">Level 01</span>
+            <h2>Logic Check</h2>
+            <p class="subtitle">
+                Allá donde la luz brilla,<br>
+                la unión de todo aquello que se puede partir <strong>en dos pedazos</strong> es la clave.
+            </p>
+            
+            <div id="sudoku-board" class="sudoku-board"></div>
+
+            <div style="margin-top: 2rem;">
+                <input type="number" id="ans-1" placeholder="Clave">
+                <br>
+                <button class="btn-chic" onclick="checkLevel1()">Siguiente nivel</button>
+            </div>
+        </div>
+
+        <div id="level-2" class="hidden">
+            <span class="step-indicator">Level 02</span>
+            <h2>The Riddle</h2>
+            <p class="subtitle">Analiza el siguiente enunciado para continuar:</p>
+            
+            <div class="highlight-box">
+                "Cuanto más me quitas, más grande me hago.<br>¿Qué soy?"
+            </div>
+            
+            <input type="text" id="ans-2" placeholder="Tu respuesta...">
+            <br>
+            <button class="btn-chic" onclick="checkLevel2()">Verificar</button>
+        </div>
+
+        <div id="level-3" class="hidden">
+            <span class="step-indicator">Level 03</span>
+            <h2>Detective Mode</h2>
+            <p class="subtitle">
+                Incidente reportado: Asesinato el domingo por la mañana.<br>
+                La esposa leía, el jardinero podaba y la criada recogía el correo.<br>
+                <strong>¿Quién miente?</strong>
+            </p>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px; max-width: 300px; margin: 0 auto 1.5rem auto;">
+                <button class="btn-option" onclick="checkLevel3(false)">La Esposa</button>
+                <button class="btn-option" onclick="checkLevel3(false)">El Jardinero</button>
+                <button class="btn-option" onclick="checkLevel3(true)">La Criada</button>
+            </div>
+            <span id="error-3" class="error-msg"></span>
+        </div>
+
+        <div id="level-4" class="hidden">
+            <span class="step-indicator">Final level</span>
+            <h2>Real Life Mission</h2>
+            <p class="subtitle">
+                Excelente, Virginia. Has superado la fase digital.<br>
+                El último paso requiere interacción física. <strong>¿Estás preparada?</strong>
+            </p>
+            
+            <div class="highlight-box" style="font-size: 1.1rem; background-color: #F0FDFA; color: #0F766E;">
+                Donde el agua fluye viva,<br>
+                pero nunca ve la luz del dia
+            </div>
+
+            <input type="number" id="final-code" placeholder="Código de seguridad">
+            <br>
+            <button class="btn-chic" onclick="checkFinalCode()">Desbloquear Regalo 🎁</button>
+            <span id="final-error" class="error-msg"></span>
+        </div>
+
+        <div id="reward" class="hidden">
+            <h1 style="color: var(--accent);">¡Felicidades!</h1>
+            <p class="subtitle">Acceso concedido. Disfruta de tu regalo.</p>
+            
+            <div class="ticket-wrapper">
+                <h2 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1rem; margin-bottom: 1rem;">ESCAPE ROOM</h2>
+                <p style="opacity: 0.9;">¡Invitan tus amigos! (Nosotros 😉)</p>
+                
+                <div style="margin-top: 2rem; background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; font-family: monospace; letter-spacing: 2px;">
+                    CODE: VIRGINIA-WIN-2025
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
