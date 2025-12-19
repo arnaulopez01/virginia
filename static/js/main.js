@@ -106,10 +106,10 @@ function checkLevel1() {
     const value = input.value.trim();
 
     // La suma correcta de los impares en celdas lilas es 25
-    if (value === "18") {
+    if (value === "23") {
         nextLevel('level-1', 'level-2');
     } else {
-        alert("Ups, el cálculo no es correcto. Recuerda: suma solo los IMPARES de las casillas destacadas. ✨");
+        alert("Ups, el código no es correcto...");
         input.value = ""; 
         input.focus();
     }
@@ -124,10 +124,10 @@ function checkLevel2() {
     const value = input.value.toLowerCase().trim();
 
     // Aceptamos variaciones de la respuesta correcta
-    if (value.includes("agujero")) {
+    if (value.includes("fuego")) {
         nextLevel('level-2', 'level-3');
     } else {
-        alert("Frío, frío... Es algo físico, pero no puedes tocarlo. 🤔");
+        alert("Frío, frío... Es algo físico, pero no puedes palparlo. 🤔");
         input.focus();
     }
 }
