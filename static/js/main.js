@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Añadir soporte para tecla "Enter" en los inputs
     setupEnterKey('ans-1', checkLevel1);
-    setupEnterKey('ans-2', checkLevel2);
+    
+    // Configuración para los dos acertijos del Nivel 2
+    setupEnterKey('ans-2-a', checkLevel2A);
+    setupEnterKey('ans-2-b', checkLevel2B);
+    
+    setupEnterKey('ans-2', checkLevel2); // Mantenemos compatibilidad por si acaso
     setupEnterKey('final-code', checkFinalCode);
 });
 
@@ -64,34 +69,27 @@ function initSudoku() {
         const cell = document.createElement('div');
         cell.classList.add('sudoku-cell');
 
-        // Calcular filas y columnas para los bordes gruesos
         const col = index % 9;
         const row = Math.floor(index / 9);
 
-        // Añadir bordes gruesos cada 3 celdas para separar bloques
         if (col === 2 || col === 5) cell.classList.add('border-right-thick');
         if (row === 2 || row === 5) cell.classList.add('border-bottom-thick');
 
-        // Colorear fondo si es casilla pista (lila)
         if (purpleIndices.includes(index)) {
             cell.classList.add('highlight-cell');
         }
 
-        // Crear el input
         const input = document.createElement('input');
-        input.type = 'tel'; // Mejor teclado en móviles
-        input.maxLength = 1; // Solo un número
+        input.type = 'tel';
+        input.maxLength = 1;
 
         if (num !== 0) {
-            // Números fijos (Initial Data)
             input.value = num;
             input.readOnly = true;
             input.classList.add('fixed');
-            input.tabIndex = -1; // Saltar al tabular
+            input.tabIndex = -1;
         } else {
-            // Celdas editables por el usuario
             input.addEventListener('input', function() {
-                // Validar que solo sean números del 1 al 9
                 this.value = this.value.replace(/[^1-9]/g, '');
             });
         }
@@ -105,7 +103,6 @@ function checkLevel1() {
     const input = document.getElementById('ans-1');
     const value = input.value.trim();
 
-    // La suma correcta de los impares en celdas lilas es 25
     if (value === "23") {
         nextLevel('level-1', 'level-2');
     } else {
@@ -116,20 +113,48 @@ function checkLevel1() {
 }
 
 /* =========================================
-   NIVEL 2: EL ACERTIJO
+   NIVEL 2: LOS ACERTIJOS
    ========================================= */
 
-function checkLevel2() {
-    const input = document.getElementById('ans-2');
+// Parte A: El acertijo del fuego
+function checkLevel2A() {
+    const input = document.getElementById('ans-2-a');
     const value = input.value.toLowerCase().trim();
 
-    // Aceptamos variaciones de la respuesta correcta
     if (value.includes("fuego")) {
-        nextLevel('level-2', 'level-3');
+        // Ocultar la primera parte y mostrar la segunda con animación
+        document.getElementById('l2-part-a').classList.add('hidden');
+        document.getElementById('l2-part-a').style.display = 'none';
+        
+        const partB = document.getElementById('l2-part-b');
+        partB.classList.remove('hidden');
+        partB.style.display = 'block';
+        setTimeout(() => partB.classList.add('fade-in'), 10);
+        
+        document.getElementById('ans-2-b').focus();
     } else {
         alert("Frío, frío... Es algo físico, pero no puedes palparlo. 🤔");
         input.focus();
     }
+}
+
+// Parte B: El acertijo del diccionario (La palabra "MAL")
+function checkLevel2B() {
+    const input = document.getElementById('ans-2-b');
+    const value = input.value.toLowerCase().trim();
+
+    // Aceptamos "mal" o la frase completa por si acaso
+    if (value === "mal" || value.includes("la palabra mal")) {
+        nextLevel('level-2', 'level-3');
+    } else {
+        alert("¡No te compliques! La respuesta es mucho más literal de lo que crees...");
+        input.focus();
+    }
+}
+
+// Mantenemos esta función por compatibilidad con el HTML original si no se cambia
+function checkLevel2() {
+    checkLevel2A();
 }
 
 /* =========================================
@@ -140,12 +165,9 @@ function checkLevel3(isCorrect) {
     const errorMsg = document.getElementById('error-3');
 
     if (isCorrect) {
-        // La respuesta correcta es La Criada (no hay correo los domingos)
         nextLevel('level-3', 'level-4');
     } else {
         errorMsg.innerText = "Esa coartada parece sólida... Intenta con otro sospechoso.";
-        
-        // Efecto visual: borrar mensaje tras 3 segundos
         setTimeout(() => {
             if(errorMsg) errorMsg.innerText = "";
         }, 3000);
@@ -163,7 +185,6 @@ async function checkFinalCode() {
 
     const originalBtnText = btn.innerText;
 
-    // Estado de carga
     btn.innerText = "Verificando...";
     btn.disabled = true;
     errorMsg.innerText = "";
@@ -171,9 +192,7 @@ async function checkFinalCode() {
     try {
         const response = await fetch('/check-final-code', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: input.value })
         });
 
@@ -181,7 +200,6 @@ async function checkFinalCode() {
 
         if (data.success) {
             nextLevel('level-4', 'reward');
-            // Aquí podrías lanzar confeti si quisieras más adelante
         } else {
             errorMsg.innerText = "Código incorrecto. ¡Busca bien!";
             btn.innerText = originalBtnText;

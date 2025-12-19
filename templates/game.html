@@ -33,15 +33,26 @@
         <div id="level-2" class="hidden">
             <span class="step-indicator">Level 02</span>
             <h2>The Riddle</h2>
-            <p class="subtitle">Adivina adivinanza:</p>
             
-            <div class="highlight-box">
-                "No estoy vivo, pero crezco, no tengo<br>pulmones pero necesito aire, <br> no tengo boca, pero el agua me mata."
+            <div id="l2-part-a">
+                <p class="subtitle">Adivina adivinanza (1/2):</p>
+                <div class="highlight-box">
+                    "No estoy vivo, pero crezco, no tengo<br>pulmones pero necesito aire, <br> no tengo boca, pero el agua me mata."
+                </div>
+                <input type="text" id="ans-2-a" placeholder="Tu respuesta...">
+                <br>
+                <button class="btn-chic" onclick="checkLevel2A()">Verificar</button>
             </div>
-            
-            <input type="text" id="ans-2" placeholder="Tu respuesta...">
-            <br>
-            <button class="btn-chic" onclick="checkLevel2()">Verificar</button>
+
+            <div id="l2-part-b" class="hidden">
+                <p class="subtitle">¡Bien! Una más para avanzar (2/2):</p>
+                <div class="highlight-box">
+                    "¿Qué palabra se escribe <strong>mal</strong> <br> en todos los diccionarios?"
+                </div>
+                <input type="text" id="ans-2-b" placeholder="Tu respuesta...">
+                <br>
+                <button class="btn-chic" onclick="checkLevel2B()">Verificar</button>
+            </div>
         </div>
 
         <div id="level-3" class="hidden">
@@ -86,6 +97,7 @@
             
             <div class="ticket-wrapper">
                 <h2 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1rem; margin-bottom: 1rem;">ESCAPE ROOM</h2>
+                <p style="opacity: 0.9;">Vale para un escape room a elejir</p>
                 <p style="opacity: 0.9;">¡Invitan tus amigos! (Nosotros 😉)</p>
                 
                 <div style="margin-top: 2rem; background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; font-family: monospace; letter-spacing: 2px;">
