@@ -18,6 +18,7 @@ def index():
 def play():
     return render_template('game.html')
 
+
 @app.route('/check-final-code', methods=['POST'])
 def check_code():
     data = request.get_json()
